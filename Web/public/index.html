@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 브랜드 아이덴티티 생성기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-index">SPEC&nbsp;/&nbsp;01</div>
+    <h1 class="masthead-title">브랜드 아이덴티티 생성기</h1>
+    <p class="masthead-sub">AI가 네이밍, 슬로건, 스토리텔링, 컬러 팔레트, 로고 시안까지 원스톱 브랜딩</p>
+  </header>
+
+  <main>
+    <form id="brief-form" novalidate>
+
+      <section class="field-row" data-index="01">
+        <div class="field-label">
+          <span class="field-num">01</span>
+          <label for="industry">업종</label>
+          <span class="field-req">필수</span>
+        </div>
+        <div class="field-input">
+          <input type="text" id="industry" name="industry" placeholder="예: 친환경 화장품" required>
+          <p class="field-hint">이 브랜드가 속한 업종을 한 줄로 적어주세요.</p>
+        </div>
+      </section>
+
+      <section class="field-row" data-index="02">
+        <div class="field-label">
+          <span class="field-num">02</span>
+          <label for="target">타겟</label>
+          <span class="field-req">필수</span>
+        </div>
+        <div class="field-input">
+          <input type="text" id="target" name="target" placeholder="예: 20-30대 여성" required>
+          <p class="field-hint">주 고객층을 적어주세요.</p>
+        </div>
+      </section>
+
+      <section class="field-row" data-index="03">
+        <div class="field-label">
+          <span class="field-num">03</span>
+          <label for="keywords">키워드</label>
+          <span class="field-req">필수</span>
+        </div>
+        <div class="field-input">
+          <input type="text" id="keywords" name="keywords" placeholder="예: 자연, 순수, 건강" required>
+          <p class="field-hint">브랜드를 표현하는 단어를 쉼표( , )로 구분해서 2~4개 정도 적어주세요.</p>
+        </div>
+      </section>
+
+      <section class="field-row" data-index="04">
+        <div class="field-label">
+          <span class="field-num">04</span>
+          <label for="tone">톤앤매너</label>
+          <span class="field-opt">선택</span>
+        </div>
+        <div class="field-input">
+          <input type="text" id="tone" name="tone" placeholder="예: 따뜻하고 신뢰감 있는">
+          <p class="field-hint">브랜드의 분위기나 인상을 적어주세요.</p>
+        </div>
+      </section>
+
+      <section class="field-row" data-index="05">
+        <div class="field-label">
+          <span class="field-num">05</span>
+          <label for="competitors">경쟁사</label>
+          <span class="field-opt">선택 · 입력 시 차별화 분석 추가 생성</span>
+        </div>
+        <div class="field-input">
+          <input type="text" id="competitors" name="competitors" placeholder="예: 이니스프리, 아로마티카">
+          <p class="field-hint">비교하고 싶은 경쟁 브랜드를 쉼표로 구분해서 적어주세요.</p>
+        </div>
+      </section>
+
+      <section class="field-row" data-index="06">
+        <div class="field-label">
+          <span class="field-num">06</span>
+          <label for="notes">추가 요청사항</label>
+          <span class="field-opt">선택</span>
+        </div>
+        <div class="field-input">
+          <textarea id="notes" name="notes" rows="3" placeholder="예: 비건 인증을 강조하고 싶습니다"></textarea>
+          <p class="field-hint">꼭 반영됐으면 하는 내용이 있다면 자유롭게 적어주세요.</p>
+        </div>
+      </section>
+
+      <div class="submit-row">
+        <p id="form-error" class="form-error" hidden></p>
+        <button type="submit" id="submit-btn" class="submit-btn">
+          <span class="submit-btn-label">브랜드 아이덴티티 생성</span>
+        </button>
+      </div>
+
+    </form>
+
+    <section id="result-section" class="result-section" hidden>
+      <!-- 결과는 script.js가 여기에 렌더링합니다 (다음 STEP에서 구현) -->
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <span>Codyssey 팀미션 2-2-1 · Project A · GN_마리너</span>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
