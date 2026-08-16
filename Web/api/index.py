@@ -10,6 +10,7 @@ import base64
 import json
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 
 from dotenv import load_dotenv
@@ -487,23 +488,33 @@ def generate():
 
     client = genai.Client(api_key=api_key)
 
-    names = generate_naming(client, brief)
-    time.sleep(3)
-    slogans = generate_slogans(client, brief)
-    time.sleep(3)
-    story = generate_story(client, brief)
-    time.sleep(3)
-    colors = generate_color_palette(client, brief)
+    # [구조 개선] 서로 의존관계가 없는 4개 호출(네이밍/슬로건/스토리/컬러)을
+    # 순차 실행 대신 병렬 실행으로 바꿔 전체 대기 시간을 크게 줄인다.
+    # (기존: 4번 호출 x 각자 응답시간 + sleep(3)x3 을 순서대로 다 더한 시간
+    #  개선: 4번 호출 중 가장 느린 1개의 응답시간만큼만 대기)
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        future_names = executor.submit(generate_naming, client, brief)
+        future_slogans = executor.submit(generate_slogans, client, brief)
+        future_story = executor.submit(generate_story, client, brief)
+        future_colors = executor.submit(generate_color_palette, client, brief)
+
+        names = future_names.result()
+        slogans = future_slogans.result()
+        story = future_story.result()
+        colors = future_colors.result()
 
     palette_image_base64 = None
     if colors and colors.get("main"):
         palette_image_base64 = build_color_palette_base64(colors)
 
-    time.sleep(3)
-    logos_base64 = build_logo_images_base64(client, brief, names, colors, count=3)
+    # [구조 개선] 로고 이미지(names/colors에 의존)와 경쟁사 분석(브리프만 필요)은
+    # 서로 독립적이므로 이것도 병렬로 실행한다.
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        future_logos = executor.submit(build_logo_images_base64, client, brief, names, colors, 3)
+        future_diff = executor.submit(generate_competitor_analysis, client, brief)
 
-    time.sleep(3)
-    differentiators = generate_competitor_analysis(client, brief)
+        logos_base64 = future_logos.result()
+        differentiators = future_diff.result()
 
     brand_data = {
         "brief": brief,
