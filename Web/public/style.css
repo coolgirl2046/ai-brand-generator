@@ -490,3 +490,13 @@ body {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+/* Accessibility - keyboard focus (오주연) ------------------------------ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
