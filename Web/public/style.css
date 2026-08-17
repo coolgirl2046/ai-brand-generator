@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendard-dynamic-subset.min.css');
+
 /* ---------------------------------------------------------------------
    AI 브랜드 아이덴티티 생성기 — 디자인 토큰
    컨셉: "브랜드 스펙 시트" — 실제 디자인 명세서처럼 항목이 번호로 매겨지고,
@@ -19,8 +21,8 @@
   --color-error: #A23B2E;
 
   /* Type - 맑은 고딕으로 통일 (굵기/크기로만 위계 표현) */
-  --font-primary: '맑은 고딕', 'Malgun Gothic', -apple-system, BlinkMacSystemFont,
-    'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+  --font-primary: 'Pretendard Variable', Pretendard, '맑은 고딕', 'Malgun Gothic',
+    -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
 
   /* Layout */
   --page-max: 720px;
@@ -84,18 +86,17 @@ body {
 }
 
 .field-row {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 24px;
+  display: block;
   padding: 22px 0;
   border-bottom: 1px solid var(--color-line);
 }
 
 .field-label {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-top: 2px;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .field-num {
@@ -118,6 +119,7 @@ body {
   letter-spacing: 0.06em;
   color: var(--color-highlight);
   text-transform: uppercase;
+  margin-left: auto;
 }
 
 .field-opt {
@@ -125,6 +127,7 @@ body {
   font-size: 15px;
   letter-spacing: 0.04em;
   color: var(--color-ink-faint);
+  margin-left: auto;
 }
 
 .field-input input[type="text"],
