@@ -378,13 +378,21 @@ def build_logo_images_base64(client, brief: dict, names: list, colors: dict, cou
 # Markdown 리포트 (개인 추가 기능 - 다운로드용 텍스트로 유지)
 # ---------------------------------------------------------------------------
 
-def build_markdown_report(brand_data: dict) -> str:
+def build_markdown_report(
+    brand_data: dict,
+    palette_image_base64: str | None = None,
+    logos_base64: list | None = None,
+) -> str:
+    """brand_result와 동일한 내용을 Markdown으로 만든다.
+    웹 버전은 이미지가 파일로 저장되지 않고 base64로만 존재하므로,
+    data URI(data:image/png;base64,...) 형태로 이미지를 직접 삽입한다."""
     brief = brand_data.get("brief", {})
     names = brand_data.get("names", [])
     slogans = brand_data.get("slogans", [])
     story = brand_data.get("story", "")
     colors = brand_data.get("colors", {})
     differentiators = brand_data.get("competitor_differentiators", [])
+    logos_base64 = logos_base64 or []
 
     lines = []
     lines.append("# 🎨 브랜드 아이덴티티 리포트")
@@ -433,8 +441,23 @@ def build_markdown_report(brand_data: dict) -> str:
         if colors.get("subs"):
             subs_str = ", ".join(f"`{c}`" for c in colors["subs"])
             lines.append(f"- **서브**: {subs_str}")
+        if palette_image_base64:
+            lines.append("")
+            lines.append(f"![컬러 팔레트](data:image/png;base64,{palette_image_base64})")
     else:
         lines.append("_생성된 컬러 팔레트가 없습니다._")
+    lines.append("")
+
+    lines.append("## 로고 시안")
+    lines.append("")
+    if logos_base64:
+        for idx, logo_b64 in enumerate(logos_base64, start=1):
+            lines.append(f"### 시안 {idx}")
+            lines.append("")
+            lines.append(f"![로고 시안 {idx}](data:image/png;base64,{logo_b64})")
+            lines.append("")
+    else:
+        lines.append("_생성된 로고 시안이 없습니다._")
     lines.append("")
 
     if brief.get("competitors"):
@@ -524,7 +547,7 @@ def generate():
         "colors": colors,
         "competitor_differentiators": differentiators,
     }
-    markdown_report = build_markdown_report(brand_data)
+    markdown_report = build_markdown_report(brand_data, palette_image_base64, logos_base64)
 
     return jsonify({
         "names": names,
