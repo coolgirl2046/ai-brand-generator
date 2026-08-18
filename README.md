@@ -31,20 +31,19 @@
 - 경쟁사 차별화 포인트 3가지 (보너스)
 - 결과를 Markdown 리포트로 다운로드 가능
 
-> 실행 결과 화면(Base)
+>실행 결과 화면(Base)
 > 
 
-![실행 결과 화면](Local_Result_.png)
+![Local_Result_.png](docs_Screenshot/Local_Result_.png)
 
-> <output (Pallet,Logo)>
+><output (Pallet,Logo)>
 > 
+![image.png](docs_Screenshot/image.png)
 
-![image.png](image.png)
 
 > 실행 결과 화면(Web)
 > 
-
-![Web Result.png](Web_Result.png)
+![Web Result.png](docs_Screenshot/Web_Result.png)
 
 ---
 
