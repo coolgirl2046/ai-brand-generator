@@ -16,10 +16,10 @@
 | 8/16 | 서경환 | 초기 스캐폴드 구축 (Base/Web 전체 코드) |
 | 8/16 | 서경환 | Vercel 타임아웃 대응(병렬화+maxDuration), 브리프 정리, README 완성 |
 | 8/17 | 조민경 | `PLAN.md`, `SERVICE_PLAN.md` 검토 및 확정 |
-| 8/18~19 | 오주연 | `Web/public/style.css` 개선 3커밋 (Branch → PR → Merge) |
-| 8/20 | 강하연 | `Base/TEST_LOG.md` — CLI 정상/예외 케이스 테스트 |
-| 8/21~23 | 강하연 | Vercel 배포 및 `Web/WEB_TEST_LOG.md` 작성 |
-| 8/24 | 조민경 | 최종 결과보고서 작성 |
+| 8/17 | 오주연 | `Web/public/style.css` 개선 3커밋 (Branch → PR → Merge) |
+| 8/18 | 강하연 | `Base/TEST_LOG.md` — CLI 정상/예외 케이스 테스트 |
+| 8/18 | 강하연 | Vercel 배포 및 `Web/WEB_TEST_LOG.md` 작성 |
+| 8/19 | 조민경 | 최종 결과보고서 작성 |
 
 ## 참고
 실무에서도 팀장 또는 메인 개발자가 초기 스캐폴드(뼈대)를 먼저 세팅하고, 이후 팀원들이 각자 브랜치·PR로 기능을 얹어가는 방식은 흔한 협업 패턴입니다. 이 저장소도 그 방식을 따랐습니다.
