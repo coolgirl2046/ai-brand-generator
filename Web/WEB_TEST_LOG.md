@@ -8,7 +8,8 @@
 - Vercel 프로젝트: Import Git Repository → `art-ruby/ai-brand-generator` (원본 `coolgirl2046/ai-brand-generator`를 fork하여 배포)
 - Root Directory: `Web`
 - Environment Variables: `GEMINI_API_KEY = ****` (Vercel 대시보드에서 직접 입력, 코드에는 넣지 않음)
-- 배포 URL: https://ai-brand-generator-fx310qr7f-rubys-projects-59348814.vercel.app/
+- 배포 URL(Production): https://ai-brand-generator-rho.vercel.app/
+- 배포 URL(Preview, 테스트 수행 시점): https://ai-brand-generator-fx310qr7f-rubys-projects-59348814.vercel.app/
 - 배포 상태: [x] 성공 / [ ] 실패
 
 ## 2. 헬스체크
